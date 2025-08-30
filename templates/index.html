@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Remover</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Background Remover</h1>
+        
+        <div class="upload-section">
+            <div class="upload-box" id="dropZone">
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <div class="upload-content">
+                    <img src="{{ url_for('static', filename='img/upload.svg') }}" alt="Upload" id="uploadIcon">
+                    <p>Drag & Drop your image here or</p>
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()">Choose File</button>
+                </div>
+                <img id="preview" class="preview-image" hidden>
+            </div>
+        </div>
+
+        <div class="options-section" hidden>
+            <button id="removeBackground" class="action-btn">Remove Background</button>
+            
+            <div class="background-options">
+                <div class="option">
+                    <label>Background Color:</label>
+                    <input type="color" id="colorPicker" value="#ffffff">
+                </div>
+                <div class="option">
+                    <label>Custom Background:</label>
+                    <input type="file" id="bgFileInput" accept="image/*">
+                </div>
+            </div>
+        </div>
+
+        <div class="result-section" hidden>
+            <img id="resultImage" class="result-image">
+            <div class="download-options">
+                <button id="downloadPNG" class="download-btn">Download PNG</button>
+                <button id="downloadJPG" class="download-btn">Download JPEG</button>
+            </div>
+        </div>
+
+        <div class="loader" hidden>
+            <div class="spinner"></div>
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
